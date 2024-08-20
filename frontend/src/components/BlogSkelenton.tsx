@@ -1,4 +1,4 @@
-import { Circle } from './BlogsCard'
+import { Circle } from "./BlogsCard"
 
 const BlogSkelenton = () => {
   return <div role='status' className='animate-pulse'>
