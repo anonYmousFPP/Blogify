@@ -17,12 +17,22 @@ const BlogsCard = ({
       <div className='flex'>
         <Avatar name={authorName} />
         <div className='font-extralight pl-2 text-sm flex justify-center flex-col'>{authorName.toUpperCase()}</div>
+        {/* <div className='flex justify-center flex-col pl-2 flex justify-center flex-col'>
+          <Circle/>
+        </div> */}
+
       </div>
       <div className='text-xl font-semibold pt-2'>{title}</div>
       <div className='text-md font-thin'>{content.length > 100 ? content.slice(0, 100) + "..." : content}</div>
       <div className='text-slate-500 text-sm font-thin pt-4'>{`${Math.ceil(content.length/100)} minute(s) read`}</div>
     </div>
   </Link> 
+}
+
+export function Circle(){
+  return <div className='h-1 w-1 rounded-full bg-slate-500'>
+
+  </div>
 }
 
 export function Avatar({name, size="small"} : {name:string, size?:"small" | "big"}){
