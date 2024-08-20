@@ -3,6 +3,14 @@ import { Avatar } from './BlogsCard'
 import { Blog } from '../hooks'
 
 const FullBlog = ({blog} : {blog: Blog}) => {
+    const date = new Date(blog.createdAt);
+    const formattedDate = date.toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric',
+    });
+
+console.log(formattedDate);
   return <div>
     <AppBar/>
     <div className='flex justify-center'>
@@ -11,11 +19,10 @@ const FullBlog = ({blog} : {blog: Blog}) => {
             <div className='text-5-xl font-extrabold'>
                 {blog.title}
             </div>
-            <div className='text-slate-500 pt-2'>Post on 2nd December 2023</div>
+            <div className='text-slate-500 pt-2'>Post on {formattedDate}</div>
             <div className='pt-4'>{blog.content}</div>
         </div>
         <div className='col-span-4'>
-            <div className='text-slate-600 text-ls'>Author</div>
             <div className='flex w-full'>
                 <div className='pr-4 flex flex-col justify-center'>
                     <Avatar size='big' name={blog.author.name || "Anonymous"}/>
@@ -25,7 +32,7 @@ const FullBlog = ({blog} : {blog: Blog}) => {
                         {blog.author.name || "Anonymous"}
                     </div>
                     <div className='pt-2 text-slate-500'>
-                        Random catch phrase about the author's ability to grab the user's attention
+                        Turning every scroll into a story that hooks you from the first line.
                     </div>
                 </div>
             </div>

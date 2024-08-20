@@ -20,6 +20,7 @@ blogRoute.use("/*", async (c, next) => {
     try {
         const user = await verify(authHeader, c.env.JWT_SECRET);
         if (user) {
+            //@ts-ignore
             c.set("userId", user.id);
             await next();
         } else {
@@ -39,8 +40,6 @@ blogRoute.use("/*", async (c, next) => {
 
 blogRoute.post('/', async (c) => {
     try{
-        console.log("hhiii");
-        
         const prisma = new PrismaClient({
             datasources: { db: { url: c.env.DATABASE_URL } },
         }).$extends(withAccelerate());
@@ -137,7 +136,8 @@ blogRoute.get('/bulk', async (c) => {
                 select: {
                     name: true
                 }
-            }
+            },
+            createdAt: true
         }
     });
 
@@ -179,7 +179,8 @@ blogRoute.get('/:id', async (c) => {
                     select: {
                         name: true
                     }
-                }
+                },
+                createdAt: true
             }
 
         })
@@ -199,7 +200,7 @@ blogRoute.get('/:id', async (c) => {
         console.log(e);
         // c.status(500);
         return c.json({
-            message: `Error found in that segment ${e.message}`,
+            message: `Error found in that segment ${e}`,
         }, 500)
     }
 })
