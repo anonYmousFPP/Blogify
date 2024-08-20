@@ -17,9 +17,9 @@ const BlogsCard = ({
       <div className='flex'>
         <Avatar name={authorName} />
         <div className='font-extralight pl-2 text-sm flex justify-center flex-col'>{authorName.toUpperCase()}</div>
-        {/* <div className='flex justify-center flex-col pl-2 flex justify-center flex-col'>
+        <div className='flex justify-center flex-col pl-2 flex justify-center flex-col'>
           <Circle/>
-        </div> */}
+        </div>
 
       </div>
       <div className='text-xl font-semibold pt-2'>{title}</div>
